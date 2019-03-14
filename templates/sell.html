@@ -1,0 +1,22 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Sell stock
+{% endblock %}
+
+{% block main %}
+    <form action="/sell" method="post">
+        <div class="form-group">
+            <select class="custom-select custom-select-sm" name="symbol" required>
+				<option value="" selected>Please select available stock</option>
+				{% for stock in summary %}
+				    <option value="{{ stock['stock_symbol'] }}">{{ stock['stock_symbol'] }}</option>
+				{% endfor %}
+			</select>
+        </div>
+        <div class="form-group">
+            <input autocomplete="off" autofocus class="form-control" name="shares" placeholder="Number of shares" type="text">
+        </div>
+        <button class="btn btn-primary" type="submit">Sell</button>
+    </form>
+{% endblock %}

@@ -1,0 +1,41 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Stock portfolio
+{% endblock %}
+
+{% block main %}
+
+<table class="table table-striped" id="index_table">
+    <thead>
+	    <tr>
+			<th scope="col">Stocks</th>
+			<th scope="col">Shares</th>
+			<th scope="col">Current stock price</th>
+			<th scope="col">Total value</th>
+		</tr>
+	</thead>
+	<tbody>
+		{% for result in summary %}
+		<tr>
+			<td>{{ result["stock_name"] }}</td>
+			<td>{{ result["bought"] }}</td>
+			<td>{{ usd(lookup(result["stock_symbol"])["price"]) }}</td>
+			<td>{{ usd(round(lookup(result["stock_symbol"])["price"] * result["bought"],4)) }}</td>
+		</tr>
+		{% endfor %}
+		<tr>
+			<th>Total cash</th>
+			<td></td>
+			<td></td>
+			<td>{{ usd(cash[0]["cash"]) }}</td>
+		</tr>
+		<tr>
+			<th>GRAND TOTAL</th>
+			<td></td>
+			<td></td>
+			<td>{{ usd(total_value + cash[0]["cash"]) }}</td>
+		</tr>
+	</tbody>
+</table>
+{% endblock %}

@@ -1,0 +1,24 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Get stock quote
+{% endblock %}
+
+{% block main %}
+<table class="table table-striped">
+    <thead>
+	    <tr>
+			<th scope="col">Stock name</th>
+			<th scope="col">Stock price</th>
+			<th scope="col">Stock symbol</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>{{ quote.name }}</td>
+			<td>{{ usd(quote.price) }}</td>
+			<td>{{ quote.symbol }}</td>
+		</tr>
+	</tbody>
+</table>
+{% endblock %}

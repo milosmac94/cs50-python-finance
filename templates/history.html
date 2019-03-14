@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Transaction history
+{% endblock %}
+
+{% block main %}
+
+<script>
+
+	$(document).ready( function () {
+	    $('#history_table').DataTable();
+	} );
+
+</script>
+
+<table class="table table-striped" id="history_table">
+    <thead>
+	    <tr>
+			<th scope="col">Stock symbol</th>
+			<th scope="col">Action</th>
+			<th scope="col">Number of shares</th>
+			<th scope="col">Total price</th>
+			<th scope="col">Date and time</th>
+		</tr>
+	</thead>
+	<tbody>
+		{% for column in history %}
+		<tr>
+			<td>{{ column["stock_symbol"] }}</td>
+			<td>{{ column["action"] }}</td>
+			<td>{{ column["bought_shares"] }}</td>
+			<td>{{ usd(column["price"]) }}</td>
+			<td>{{ column["timestamp"] }}</td>
+		</tr>
+		{% endfor %}
+	</tbody>
+</table>
+{% endblock %}

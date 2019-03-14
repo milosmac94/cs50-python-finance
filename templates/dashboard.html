@@ -1,0 +1,64 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Dashboard
+{% endblock %}
+
+{% block main %}
+    <h5>Change password</h5>
+    <form action="{{ url_for('change') }}" method="post" id="form-check-password" class="needs-validation" novalidate>
+        <div class="form-group">
+            <input autocomplete="off" autofocus class="form-control" name="old_password" placeholder="Current password" type="password" required>
+        </div>
+        <div class="form-group">
+            <input autocomplete="off" autofocus class="form-control" name="new_password" id="password" placeholder="New password" type="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required>
+        </div>
+        <div class="form-group">
+            <input autocomplete="off" autofocus class="form-control" name="confirm_password" id="conf_password" placeholder="Confirm new" type="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required>
+        </div>
+        <button class="btn btn-primary" type="submit">Change password</button>
+    </form>
+    <br><br>
+    <h5>Add cash</h5>
+    <form action="{{ url_for('add') }}" method="post" class="needs-validation" novalidate>
+        <div class="form-group">
+            <input autocomplete="off" autofocus class="form-control" name="amount" placeholder="Amount" type="number" required>
+        </div>
+        <button class="btn btn-primary" type="submit">Add cash</button>
+    </form>
+
+    <script>
+
+    // Example starter JavaScript for disabling form submissions if there are invalid fields
+        (function() {
+          'use strict';
+          window.addEventListener('load', function() {
+            // Fetch all the forms we want to apply custom Bootstrap validation styles to
+            var forms = document.getElementsByClassName('needs-validation');
+            // Loop over them and prevent submission
+            var validation = Array.prototype.filter.call(forms, function(form) {
+              form.addEventListener('submit', function(event) {
+                if (form.checkValidity() === false) {
+                  event.preventDefault();
+                  event.stopPropagation();
+                }
+                form.classList.add('was-validated');
+              }, false);
+            });
+          }, false);
+        })();
+
+    // Check for pattern mismatch in new password and inform user about correct pattern
+
+    const password = document.getElementById("password");
+
+    password.addEventListener("input", function(event) {
+        if (password.validity.patternMismatch) {
+            password.setCustomValidity("Password should be a minimum of 8 characters and include at least one uppercase letter, one lowercase letter and one number.");
+        } else {
+            password.setCustomValidity("");
+        }
+    });
+
+    </script>
+{% endblock %}
