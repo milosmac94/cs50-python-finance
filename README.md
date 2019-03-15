@@ -9,3 +9,8 @@
 * Includes dashboard that allows users to change their password and add unlimited cash to their account $.$
 
 *Enjoy!*
+
+**Dependencies**
+* Flask *(pip install flask)*
+* cs50 module *(pip install cs50)*
+* requests module *(pip install requests)*
