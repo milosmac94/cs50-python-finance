@@ -5,7 +5,7 @@
 * Utilizes SQLLite DB (local)
 * Supports login sessions
 * Has server-side validation on various levels
-* Talks to IEX API
+* Talks to IEX API to get real-time stock prices
 * Includes dashboard that allows users to change their password and add unlimited cash to their account $.$
 
-Enjoy!
+*Enjoy!*
